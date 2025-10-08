@@ -1,6 +1,6 @@
 Ion.Tools.Random ![](https://img.shields.io/badge/style-1.0-blue.svg?style=flat&label=Version)
 ---
-...
+ <img src="https://github.com/ionsharp/Ion.Tools.Random/blob/main/Image/LogoWide.png?raw=true"/>
 
 Wiki ![](https://img.shields.io/badge/style-Coming%20soon!-red.svg?style=flat&label=)
 ---
