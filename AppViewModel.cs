@@ -1,10 +1,15 @@
 ﻿using Ion;
 using Ion.Core;
+using Ion.Input;
 using Ion.Text;
+using Microsoft.Toolkit.Uwp;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Ion.Tools.Random;
 
-public record class MainViewModel : Model
+public record class AppViewModel() : AppToolViewModel()
 {
     /*
     The lowercase letter l (ell) and the digit 1 (one)
@@ -41,7 +46,7 @@ public record class MainViewModel : Model
 
     public String Text { get => Get(""); set => Set(value); }
 
-    public MainViewModel() : base() { }
+    public override string Title => nameof(Random);
 
     private static readonly System.Random random = new System.Random();
 
@@ -164,4 +169,12 @@ public record class MainViewModel : Model
 
         Text = getRandomString(lengthMinimum, lengthMaximum, minimumNumbers, minimumSpecial);
     }
+
+    public ICommand CopyCommand => Commands[nameof(CopyCommand)] ??= new RelayCommand(() =>
+    {
+        Clipboard.SetText(Text);
+        ///new ToastContentBuilder().AddText("Copied!").Show();
+    }, () => true);
+
+    public ICommand DoCommand => Commands[nameof(DoCommand)] ??= new RelayCommand(() => Do(), () => true);
 }
